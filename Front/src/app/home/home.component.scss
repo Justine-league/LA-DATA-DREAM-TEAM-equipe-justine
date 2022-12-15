@@ -1,0 +1,47 @@
+@media (min-width: 1300px) {
+
+
+  .containerBackgroundHome {
+    width: 100vw;
+    height: 100vh;
+    background: url("../../assets/images/truck_bg.jpg");
+    background-size: cover;
+    display: flex;
+    overflow: scroll;
+
+    .BackgroundHome {
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .containerPage {
+      margin: auto;
+      width: 65vw;
+      height: 100vh;
+      background-color: white;
+      overflow: scroll;
+    }
+
+
+  }
+
+}
+
+@media (max-width: 1300px) {
+.containerBackgroundHome {
+  width: 100vw;
+  height: 100vh;
+  .BackgroundHome {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  .containerPage {
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+  }
+}
+}
