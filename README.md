@@ -15,9 +15,9 @@ L'expert technique de l'entreprise vous fournit en supplément un cahier des cha
 
 Sophana et Dylan ont travaillés sur la partie 1, Joao, Sirine et Justine on travaillés sur la partie deux. 
 Vous pouvez voir la répartition des tâches avec les issues qui sont assignées aux personnes qui les ont faites.
-Nous avont pas eu le temps de finir tout le briefs dans les temps imparties.
-Pour la partie 1 nous n'avont pas calculer la fréquence de renouvellement des clusters.
-Pour la partie deux ils manques plus de parties.
+Nous avont pas eu le temps de finir tout le brief dans les temps imparties.
+Pour la partie 1 nous n'avont pas encore calculé la fréquence de renouvellement des clusters.
+Pour la partie 2 il nous manques les Milestones 6 et 7 pour amélirer notre modèle finale.
 
 Maquette graphique presente sur se lien : 
 https://www.figma.com/file/mgkFzYez65pYMWizlNR0Hj/Untitled?node-id=0%3A1&t=pu8bdLQDkGiQ0dFw-1
