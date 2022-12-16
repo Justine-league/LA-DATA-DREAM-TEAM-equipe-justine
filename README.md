@@ -22,3 +22,14 @@ Pour la partie 2 il nous manques les Milestones 6 et 7 pour amélirer notre mod�
 Maquette graphique presente sur se lien : 
 https://www.figma.com/file/mgkFzYez65pYMWizlNR0Hj/Untitled?node-id=0%3A1&t=pu8bdLQDkGiQ0dFw-1
 Lancer le modèle avec le bouton play afin de voir le fonctionnement prevue pour le ste
+
+Instruction pour lancer l'interface grahique : 
+
+Pour lancer un projet Angular dabbord telecharger node.js ici : https://nodejs.org/en/download/
+ensuite installer angular avec : npm install -g @angular/cli
+demarrer en premier le serveur dans python-bdd-musee-engrenage/main.py
+et ensuite demarrer le front avec angular dans musee_virtuel_engrenage/angular-musee-engrenage et lancer avec le terminal 'ng serve --serve-path'
+Tout les pip install se feront automatiquement en decommentant la boucle for pip in pips_install: presente dans python-bdd-musee-engrenage/main.py ligne 23 a 27 Sinon installer manuellement avec pip install et les noms present dans la variable pips_install
+
+pips_install = ['numpy', 'pandas', 'requests', 'beautifulsoup4', "Flask ", "flask-restful", "flask-cors", "requests"]
+https://nodejs.org/en/download/
