@@ -4,6 +4,7 @@ import json
 from os.path import exists
 
 from pages.form_to_predict import Form_to_predict
+from pages.form_to_predict import Form_to_predict
 
 
 def install(package):
