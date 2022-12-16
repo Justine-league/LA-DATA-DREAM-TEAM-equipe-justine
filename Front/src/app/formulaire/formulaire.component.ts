@@ -32,7 +32,6 @@ export class FormulaireComponent {
     let date: Date = new Date()
     let dateStr: string = date.toISOString().split('T')[0];
     let predict = new Predict(
-      form.value.price_product,
       form.value.largeur_cm,
       form.value.longueur_cm,
       form.value.hauteur_cm,
@@ -41,6 +40,7 @@ export class FormulaireComponent {
       form.value.lat_customer,
       form.value.long_seller,
       form.value.lat_seller,
+      form.value.price_product,
     )
     console.log(predict)
 

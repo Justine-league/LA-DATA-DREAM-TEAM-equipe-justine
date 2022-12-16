@@ -23,8 +23,8 @@ class Model_predict_price:
     trained_models = {
         # "KNeighborsRegressor": [],
         # "GradientBoostingRegressor": [],
-        # "ExtraTreesRegressor": [],
-        "RandomForestRegressor": [],
+        "ExtraTreesRegressor": [],
+        # "RandomForestRegressor": [],
         # "DecisionTreeRegressor": [],
         # "LinearRegression": [],
         # "Lasso": [],
@@ -34,8 +34,8 @@ class Model_predict_price:
     index_models = [
         # "KNeighborsRegressor",
         # "GradientBoostingRegressor",
-        # "ExtraTreesRegressor",
-        "RandomForestRegressor",
+        "ExtraTreesRegressor",
+        # "RandomForestRegressor",
         # "DecisionTreeRegressor",
         # "LinearRegression",
         # "Lasso",
@@ -55,8 +55,8 @@ class Model_predict_price:
     regressors = [
         # KNeighborsRegressor(),
         # GradientBoostingRegressor(),
-        # ExtraTreesRegressor(),
-        RandomForestRegressor(),
+        ExtraTreesRegressor(),
+        # RandomForestRegressor(),
         # DecisionTreeRegressor(),
         # LinearRegression(),
         # Lasso(),

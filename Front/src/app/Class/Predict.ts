@@ -14,8 +14,10 @@ export class Predict {
   delai_delivery: number | null = null;
 
 
-  constructor(largeur_cm: number, longueur_cm: number, hauteur_cm: number, poids_g: number, long_customer: number, lat_customer: number, long_seller: number,
-              lat_seller: number, price_product: number, distance: number | null = null, price_delivery: number | null = null ) {
+  constructor(largeur_cm: number, longueur_cm: number, hauteur_cm: number, poids_g: number,
+              long_customer: number, lat_customer: number, long_seller: number,
+              lat_seller: number, price_product: number, distance: number | null = null,
+              price_delivery: number | null = null ) {
     this.largeur_cm = largeur_cm;
     this.longueur_cm = longueur_cm;
     this.hauteur_cm = hauteur_cm;

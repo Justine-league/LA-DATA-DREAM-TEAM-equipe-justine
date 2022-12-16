@@ -59,7 +59,7 @@ class Form_to_predict:
     def price_deliverydef(self,price_delivery):
         self.price_delivery = price_delivery
 
-    def delai_deliverydef(self, price_delivery):
-        self.delai_delivery = price_delivery
+    def delai_deliverydef(self, delai_delivery):
+        self.delai_delivery = delai_delivery
 
 

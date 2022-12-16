@@ -44,8 +44,8 @@ api = Api(app)
 
 # post with multiple value get a json from interface class object from ts
 class formualaire_predict(Resource):
-    form = None
     def post(self):
+        form = None
         res = request.get_json()
         price_product = res.get("price_product")
         largeur_cm = res.get("largeur_cm")
@@ -57,8 +57,8 @@ class formualaire_predict(Resource):
         long_seller = res.get("long_seller")
         lat_seller = res.get("lat_seller")
         self.form = Form_to_predict(price_product, largeur_cm, longueur_cm, hauteur_cm, poids_g, lat_seller, long_seller, lat_customer, long_customer)
-        res_price_delivery = prediction_model_price.predict_RandomForestRegressor([[price_product, poids_g, longueur_cm, hauteur_cm, largeur_cm, self.form.distance]]).copy()
-        res_delai_delivery = prediction_model_delai.predict_GradientBoostingRegressor([[price_product, self.form.distance]]).copy()
+        res_price_delivery = prediction_model_price.predict_ExtraTreesRegressor([[price_product, poids_g, longueur_cm, hauteur_cm, largeur_cm, self.form.distance]])
+        res_delai_delivery = prediction_model_delai.predict_GradientBoostingRegressor([[price_product, self.form.distance]])
         self.form.price_deliverydef(round(float(res_price_delivery[0]), 2))
         self.form.delai_deliverydef(round(round(res_delai_delivery[0]), 2))
         print(
