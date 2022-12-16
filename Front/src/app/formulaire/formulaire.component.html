@@ -3,6 +3,8 @@
 <div class="containerForm">
 
   <form class="form" #form="ngForm" (submit)="submit(form)" *ngIf="this.data_bdd_response==null">
+    <label for="price_product">prix du produit :</label>
+    <input type="number" name="price_product" id="price_product" ngModel>
     <label for="largeur_cm">largeur cm :</label>
     <input type="number" name="largeur_cm" id="largeur_cm" ngModel>
 
@@ -41,6 +43,8 @@
   <div class="form" *ngIf="this.data_bdd_response!=null">
 
     <div>
+      <p>Le prix du produit est : {{this.data_bdd_response.price_product}}</p>
+
       <p>Les caracteristiques de votre colis sont :</p>
       <ul>
 
@@ -67,8 +71,8 @@
         <p>Les modalités de livraisons sont : </p>
         <ul>
           <li>Distance à parcourir : {{this.data_bdd_response.distance}} Km</li>
-          <li>Frais à prévoir : </li>
-          <li>Delai de livraison estimé :</li>
+          <li>Frais à prévoir : {{this.data_bdd_response.price_delivery}} €</li>
+          <li>Delai de livraison estimé : {{this.data_bdd_response.delai_delivery}} Jours</li>
         </ul>
         <button class="ButtonCancel" mat-raised-button color="warn" routerLink="/accueil">Quitter</button>
         <button class="ButtonPredict" mat-raised-button color="warn" (click)="reloadCurrentPage()">Refaire une prediction</button>

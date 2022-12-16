@@ -14,18 +14,35 @@ from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.ensemble import ExtraTreesRegressor, RandomForestRegressor
 from sklearn.tree import DecisionTreeRegressor
 
-data_base = pd.read_csv("../ressources/data_base.csv")
+data_base = pd.read_csv("ressources/data_without_zero.csv")
 # Perform Scaling
 from sklearn.preprocessing import StandardScaler
 
 
-class Model_predict:
+class Model_predict_delai:
     trained_models = {
-        'ExtraTreesRegressor': [],
-        # 'RandomForestRegressor': []
+        # "KNeighborsRegressor" : [],
+        "GradientBoostingRegressor" : [],
+        # "ExtraTreesRegressor" : [],
+        # "RandomForestRegressor" : [],
+        # "DecisionTreeRegressor" : [],
+        # "LinearRegression" : [],
+        # "Lasso" : [],
+        # "ElasticNet" : [],
+        # "Ridge" : [],
     }
-    index_models = ['ExtraTreesRegressor', 'RandomForestRegressor']
-    data = data_base[["product_price", "weight", "lenght", "height", "width", "distance", "prix_de_livraison"]]
+    index_models = [
+        # "KNeighborsRegressor",
+        "GradientBoostingRegressor",
+        # "ExtraTreesRegressor",
+        # "RandomForestRegressor",
+        # "DecisionTreeRegressor",
+        # "LinearRegression",
+        # "Lasso",
+        # "ElasticNet",
+        # "Ridge"
+    ]
+    data = data_base[["product_price", "distance", "days_to_delivery"]]
     data = data.dropna()
     X = data.iloc[:, :-1]
     y = data.iloc[:, -1]
@@ -33,11 +50,18 @@ class Model_predict:
     sc = StandardScaler()
     X_sc = sc.fit_transform(X)
 
-    X_train, X_test, y_train, y_test = train_test_split(X_sc, y, test_size=0.2)
+    X_train, X_test, y_train, y_test = train_test_split(X_sc, y, test_size=0.4)
 
     regressors = [
-        ExtraTreesRegressor(),
-        # RandomForestRegressor()
+        # KNeighborsRegressor(),
+        GradientBoostingRegressor(),
+        # ExtraTreesRegressor(),
+        # RandomForestRegressor(),
+        # DecisionTreeRegressor(),
+        # LinearRegression(),
+        # Lasso(),
+        # ElasticNet(),
+        # Ridge()
     ]
 
     head = 10
@@ -48,8 +72,6 @@ class Model_predict:
         train_time = time() - start
         start = time()
         y_pred = model.predict(X_test)
-        print(X_test)
-
         predict_time = time() - start
         print(model)
         print("\tTraining time: %0.3fs" % train_time)
@@ -59,12 +81,13 @@ class Model_predict:
         print("\tR2 score:", r2_score(y_test, y_pred))
 
     def predict_ExtraTreesRegressor(self, to_train):
-        yolo = self.trained_models['ExtraTreesRegressor'][0].predict(to_train)
-        print(yolo)
+        res = self.trained_models['ExtraTreesRegressor'][0].predict(to_train)
+        print(res)
+        return res
+
+    def predict_GradientBoostingRegressor(self, to_train):
+        res = self.trained_models['GradientBoostingRegressor'][0].predict(to_train)
+        print(res)
+        return res
 
 
-test = Model_predict()
-
-sc = StandardScaler()
-print(sc.fit_transform([15]))
-test.predict_ExtraTreesRegressor(sc.fit_transform([[15]]))

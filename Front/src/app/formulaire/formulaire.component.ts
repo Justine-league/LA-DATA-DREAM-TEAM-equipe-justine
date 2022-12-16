@@ -32,6 +32,7 @@ export class FormulaireComponent {
     let date: Date = new Date()
     let dateStr: string = date.toISOString().split('T')[0];
     let predict = new Predict(
+      form.value.price_product,
       form.value.largeur_cm,
       form.value.longueur_cm,
       form.value.hauteur_cm,
@@ -47,6 +48,7 @@ export class FormulaireComponent {
     let request =
       this.http.post(`http://127.0.0.1:5000/api/formualaire_predict`,
         {
+          "price_product": predict.price_product,
           "largeur_cm": predict.largeur_cm,
           "longueur_cm": predict.longueur_cm,
           "hauteur_cm": predict.hauteur_cm,
@@ -59,6 +61,7 @@ export class FormulaireComponent {
 
     request.subscribe((json) => {
       this._data_bdd_response = JSON.parse(<string>json);
+      console.log(this._data_bdd_response)
 
     });
 

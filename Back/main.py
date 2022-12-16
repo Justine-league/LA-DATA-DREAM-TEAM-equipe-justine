@@ -5,6 +5,8 @@ from os.path import exists
 
 from pages.form_to_predict import Form_to_predict
 from pages.form_to_predict import Form_to_predict
+from pages.Model_predict_price import Model_predict_price
+from pages.Model_predict_delai import Model_predict_delai
 
 
 def install(package):
@@ -15,11 +17,17 @@ def install(package):
 
 pips_install = ['numpy', 'pandas', "Flask ", "flask-restful", "flask-cors"]
 
+
 # for pip in pips_install:
 #     try:
 #         install(pip)
 #     except:
 #         print(f"impossible d'installer {pip}")
+
+
+##Run prediction model
+prediction_model_price = Model_predict_price()
+prediction_model_delai = Model_predict_delai()
 
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
@@ -31,17 +39,7 @@ cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 api = Api(app)
 
 
-# simple get
-# class Engrenages(Resource):
-#     def get(self):
-#         return getEngrenages()
-# api.add_resource(Engrenages, '/api/getEngrenages')
 
-# get with id
-# class Engrenage(Resource):
-#     def get(self, engrenageid):
-#         return getEngrenage(engrenageid)
-# api.add_resource(Engrenage, '/api/getEngrenages/<engrenageid>')
 
 
 # post with multiple value get a json from interface class object from ts
@@ -49,6 +47,7 @@ class formualaire_predict(Resource):
     form = None
     def post(self):
         res = request.get_json()
+        price_product = res.get("price_product")
         largeur_cm = res.get("largeur_cm")
         longueur_cm = res.get("longueur_cm")
         hauteur_cm = res.get("hauteur_cm")
@@ -57,7 +56,11 @@ class formualaire_predict(Resource):
         lat_customer = res.get("lat_customer")
         long_seller = res.get("long_seller")
         lat_seller = res.get("lat_seller")
-        self.form = Form_to_predict(largeur_cm, longueur_cm, hauteur_cm, poids_g, lat_seller, long_seller, lat_customer, long_customer)
+        self.form = Form_to_predict(price_product, largeur_cm, longueur_cm, hauteur_cm, poids_g, lat_seller, long_seller, lat_customer, long_customer)
+        res_price_delivery = prediction_model_price.predict_RandomForestRegressor([[price_product, poids_g, longueur_cm, hauteur_cm, largeur_cm, self.form.distance]]).copy()
+        res_delai_delivery = prediction_model_delai.predict_GradientBoostingRegressor([[price_product, self.form.distance]]).copy()
+        self.form.price_deliverydef(round(float(res_price_delivery[0]), 2))
+        self.form.delai_deliverydef(round(round(res_delai_delivery[0]), 2))
         print(
             json.dumps(self, default=lambda form: self.form.__dict__,
                        sort_keys=True, indent=4)
@@ -71,20 +74,7 @@ class formualaire_predict(Resource):
 api.add_resource(formualaire_predict, '/api/formualaire_predict', methods=["POST"])
 
 
-# class formualaire_predict(Resource):
-#     def get(self, engrenageid):
-#         return getForUpdateEngrenageSQL(engrenageid)
-#     def post(self):
-#         res = request.get_json()
-#         nomEngrenage = res.get("nomEngrenage")
-#         idEngrenage = res.get("id")
-#         avantage = res.get("avantage")
-#         inconvenient = res.get("inconvenient")
-#         image = res.get("image")
-#         Date = res.get("Date")
-#         userName = res.get("userName")
-#         updateEngrenageSQL(idEngrenage, nomEngrenage, avantage, inconvenient, image, Date, userName)
-# api.add_resource(formualaire_predict, '/api/updateEngrenages/<engrenageid>')
+
 
 
 if __name__ == '__main__':

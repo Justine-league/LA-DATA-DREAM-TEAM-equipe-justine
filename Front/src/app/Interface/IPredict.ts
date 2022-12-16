@@ -9,6 +9,7 @@ export interface IPredict {
   lat_customer: number,
   long_seller: number,
   lat_seller: number,
+  price_product: number,
   distance: number,
 
 
