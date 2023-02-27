@@ -1,0 +1,83 @@
+<h1 class="title_form">Formulaire de prévision de frais et de delais de livraisons</h1>
+
+<div class="containerForm">
+
+  <form class="form" #form="ngForm" (submit)="submit(form)" *ngIf="this.data_bdd_response==null">
+    <label for="price_product">prix du produit :</label>
+    <input type="number" name="price_product" id="price_product" ngModel>
+    <label for="largeur_cm">largeur cm :</label>
+    <input type="number" name="largeur_cm" id="largeur_cm" ngModel>
+
+    <label for="longueur_cm">longueur cm :</label>
+    <input type="number" name="longueur_cm" id="longueur_cm" ngModel>
+
+    <label for="hauteur_cm">hauteur cm :</label>
+    <input type="number" name="hauteur_cm" id="hauteur_cm" ngModel>
+
+    <label for="poids_g">poids g :</label>
+    <input type="number" name="poids_g" id="poids_g" ngModel>
+
+    <label for="long_customer">adress customer :</label>
+    <div class="coordinates">
+      <p>longitude : </p>
+      <input type="number" name="long_customer" id="long_customer" ngModel>
+      <p>latitude : </p>
+      <input type="number" name="lat_customer" id="lat_customer" ngModel>
+    </div>
+
+
+    <label for="long_seller">adress seller :</label>
+    <div class="coordinates">
+      <p>longitude : </p>
+      <input type="number" name="long_seller" id="long_seller" ngModel>
+      <p>latitude : </p>
+      <input type="number" name="lat_seller" id="lat_seller" ngModel>
+    </div>
+
+    <div>
+      <button class="ButtonCancel" mat-raised-button color="warn" routerLink="/accueil">Annuler</button>
+      <button class="ButtonPredict" mat-raised-button color="warn" type="submit">Predire</button>
+    </div>
+
+  </form>
+  <div class="form" *ngIf="this.data_bdd_response!=null">
+
+    <div>
+      <p>Le prix du produit est : {{this.data_bdd_response.price_product}}</p>
+
+      <p>Les caracteristiques de votre colis sont :</p>
+      <ul>
+
+        <li>Hauteur : {{this.data_bdd_response.hauteur_cm}}</li>
+        <li>Largeur : {{this.data_bdd_response.largeur_cm}}</li>
+        <li>Longueur : {{this.data_bdd_response.longueur_cm}}</li>
+        <li>Poids : {{this.data_bdd_response.poids_g}}</li>
+      </ul>
+      <div>
+        <p>coordonnées du Customer :</p>
+        <ul>
+          <li>longitude : {{this.data_bdd_response.long_customer}}</li>
+          <li>latitude : {{this.data_bdd_response.lat_customer}}</li>
+        </ul>
+      </div>
+      <div>
+        <p>coordonnées du Seller :</p>
+        <ul>
+          <li>longitude : {{this.data_bdd_response.long_seller}}</li>
+          <li>latitude : {{this.data_bdd_response.lat_seller}}</li>
+        </ul>
+      </div>
+      <div>
+        <p>Les modalités de livraisons sont : </p>
+        <ul>
+          <li>Distance à parcourir : {{this.data_bdd_response.distance}} Km</li>
+          <li>Frais à prévoir : {{this.data_bdd_response.price_delivery}} €</li>
+          <li>Delai de livraison estimé : {{this.data_bdd_response.delai_delivery}} Jours</li>
+        </ul>
+        <button class="ButtonCancel" mat-raised-button color="warn" routerLink="/accueil">Quitter</button>
+        <button class="ButtonPredict" mat-raised-button color="warn" (click)="reloadCurrentPage()">Refaire une prediction</button>
+      </div>
+
+    </div>
+  </div>
+</div>

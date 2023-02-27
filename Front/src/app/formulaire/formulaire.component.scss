@@ -1,0 +1,67 @@
+.title_form{
+  text-align: center;
+  font-family: "Dancing Script";
+
+  margin: 2rem;
+}
+
+.containerForm {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .form {
+    height: 80%;
+    width: 50%;
+    padding: 1rem;
+    display: grid;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px,
+    rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset,
+    rgba(0,0,0,0.29) -5px 5px, rgba(42,42,42,0.3) -10px 10px, rgba(148,148,148,0.39) -15px 15px, rgb(236,236,236) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+    align-items: center;
+    background-color: #cccccc;
+    border: black solid 1px;
+    grid-template-columns: repeat(1, 80%);
+    overflow: scroll;
+    p {
+      font-family: "Dancing Script";
+      text-transform: capitalize;
+
+      font-size: 1.5em;
+    }
+    ul{
+      list-style-type: none;
+    }
+    .coordinates{
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      margin: auto;
+      input{
+        height: 50%;
+      }
+    }
+    input {
+      height: 100%;
+    }
+
+    label {
+      color: rgb(0, 0, 0);
+      text-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      font-family: "Dancing Script";
+      text-transform: capitalize;
+      font-size: 2em;
+    }
+    .ButtonCancel{
+      background-color: #bb6969;
+
+    }
+    .ButtonPredict{
+      background-color: #79c979;
+
+    }
+  }
+}

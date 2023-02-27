@@ -1,0 +1,44 @@
+.containerIntro{
+  width: 100%;
+  height: 65vh;
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+
+
+  img{
+    width: 30%;
+    height: 30%;
+    float: left;
+    margin: 10px;
+
+  }
+
+  .intro{
+    width: 90%;
+    height: max-content;
+    max-height: 100%;
+    overflow: scroll;
+    background-color: #f5eadb;
+    h1{
+      font-family: "Dancing Script";
+      font-size: 200%;
+    }
+    &::-webkit-scrollbar {
+      width: 5px; /* width of the entire scrollbar */
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent; /* color of the tracking area */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(36, 36, 36); /* color of the scroll thumb */
+      border-radius: 1px; /* roundness of the scroll thumb */
+      // border: 1px solid rgb(128, 128, 128); /* creates padding around scroll thumb */
+    }
+    div{
+      height: 65vh;
+    }
+  }
+}
